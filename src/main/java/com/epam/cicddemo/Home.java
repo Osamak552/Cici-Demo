@@ -9,6 +9,7 @@ public class Home {
 
     public void doSomething(){
         log.info("Hello World");
+        log.info("New Change");
 
     }
 }
