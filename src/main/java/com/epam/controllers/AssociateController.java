@@ -23,7 +23,11 @@ public class AssociateController {
     private final AssociateService associateService;
 
 
+<<<<<<< HEAD
     @PostMapping("")
+=======
+    @PostMapping("/")
+>>>>>>> 7488627241d666c90f42ebc2e6193e05639cc0da
     public ResponseEntity<APIResponse<AssociateResponse>> createAssociate(@RequestBody @Valid AssociateRequest associateRequest)
     {
         log.info("AssociateController::createAssociate invoked");
@@ -39,7 +43,11 @@ public class AssociateController {
     }
 
     @GetMapping("/{gender}")
+<<<<<<< HEAD
     public ResponseEntity<APIResponse<Page<AssociateResponse>>> getAllAssociates(@PathVariable String gender)
+=======
+    public ResponseEntity<APIResponse<Page<AssociateResponse>>> getAllAssociates(@RequestParam int pageNumber, @RequestParam int pageSize,@PathVariable String gender)
+>>>>>>> 7488627241d666c90f42ebc2e6193e05639cc0da
     {
         log.info("AssociateController::getAllAssociates invoked");
         Page<AssociateResponse> associateResponses = associateService.getAssociatesByGender(0,10,gender);
@@ -50,6 +58,10 @@ public class AssociateController {
                 .build();
         log.info("AssociateController::getAllAssociates response {}",responseDTO);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+    @GetMapping("/name")
+    public String hello(){
+        return "Osama";
     }
 
     @GetMapping("/get-associate/{associateId}")
