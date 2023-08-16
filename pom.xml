@@ -11,7 +11,7 @@
     <groupId>com.epam</groupId>
     <artifactId>Java-RD</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-         <packaging>war</packaging>
+
     <name>Java-RD</name>
     <description>Java-RD</description>
     <properties>
