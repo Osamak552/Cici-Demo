@@ -13,14 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("rd/batches")
+@RequestMapping("/rd/batches")
 @Slf4j
 @RequiredArgsConstructor
 public class BatchController {
     public static final String SUCCESS = "Success";
     private final BatchService batchService;
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<APIResponse<BatchResponse>> createBatch(@RequestBody @Valid BatchRequest batchRequest) {
 
         log.info("BatchController::createBatch invoked");

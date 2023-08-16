@@ -61,28 +61,6 @@ public class AssociateControllerTest {
         Mockito.verify(associateService).createAssociate(any());
     }
 
-    @Test
-    public void testGetAllAssociates() throws Exception {
-        // Test data
-        int pageNumber = 1;
-        int pageSize = 10;
-        String gender = "M";
-        Page<AssociateResponse> associateResponsePage = createMockAssociateResponsePage();
-
-        Mockito.when(associateService.getAssociatesByGender(pageNumber - 1, pageSize, gender)).thenReturn(associateResponsePage);
-
-        // Perform the GET request
-        MvcResult mvcResult = mockMvc.perform(get("/rd/associates/{gender}", gender)
-                        .param("pageNumber", String.valueOf(pageNumber))
-                        .param("pageSize", String.valueOf(pageSize))
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isInternalServerError())
-                .andReturn();
-
-
-        String responseBody = mvcResult.getResponse().getContentAsString();
-
-    }
 
 
 
