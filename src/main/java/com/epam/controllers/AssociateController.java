@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("rd/associates")
+@RequestMapping("/rd/associates")
 @Slf4j
 @RequiredArgsConstructor
 public class AssociateController {
@@ -23,7 +23,7 @@ public class AssociateController {
     private final AssociateService associateService;
 
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<APIResponse<AssociateResponse>> createAssociate(@RequestBody @Valid AssociateRequest associateRequest)
     {
         log.info("AssociateController::createAssociate invoked");
@@ -38,7 +38,7 @@ public class AssociateController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping("{gender}")
+    @GetMapping("/{gender}")
     public ResponseEntity<APIResponse<Page<AssociateResponse>>> getAllAssociates(@RequestParam int pageNumber, @RequestParam int pageSize,@PathVariable String gender)
     {
         log.info("AssociateController::getAllAssociates invoked");
@@ -51,8 +51,12 @@ public class AssociateController {
         log.info("AssociateController::getAllAssociates response {}",responseDTO);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
+    @GetMapping("/name")
+    public String hello(){
+        return "Osama";
+    }
 
-    @GetMapping("get-associate/{associateId}")
+    @GetMapping("/get-associate/{associateId}")
     public ResponseEntity<APIResponse<AssociateResponse>> getAssociateById(@PathVariable long associateId)
     {
         log.info("AssociateController::getAssociateById invoked");
@@ -67,7 +71,7 @@ public class AssociateController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @PutMapping("{associateId}")
+    @PutMapping("/{associateId}")
     public ResponseEntity<APIResponse<AssociateResponse>> updateAssociate(@RequestBody @Valid AssociateRequest associateRequest,@PathVariable long associateId)
     {
         log.info("AssociateController::updateAssociate invoked");
@@ -82,7 +86,7 @@ public class AssociateController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @DeleteMapping("{associateId}")
+    @DeleteMapping("/{associateId}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteBatch(@PathVariable int associateId) {
         associateService.deleteAssociate(associateId);
